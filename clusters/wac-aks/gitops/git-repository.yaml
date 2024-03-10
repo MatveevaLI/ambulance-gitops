@@ -11,5 +11,5 @@ spec:
  url: https://github.com/MatveevaLI/ambulance-gitops
 
 # ak používate privátny repozitár nezabudnite doplniť autentifikačné údaje
-# secretRef:
-#    name: matveevali-repository-pat
+secretRef:
+    name: matveevali-repository-pat
