@@ -10,6 +10,11 @@ commonLabels:
 
 resources:
 - ../../../apps/matveevali-ambulance-ufe
+- ../../../apps/matveevali-ambulance-webapi
 
 components:
- - ../../../components/version-developers
+- ../../../components/version-developers
+- https://github.com/MatveevaLI/ambulance-webapi//deployments/kustomize/components/mongodb
+
+patches:
+- path: patches/ambulance-webapi.service.yaml
