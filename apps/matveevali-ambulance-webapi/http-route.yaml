@@ -36,7 +36,7 @@ spec:
   - matches:
       - path:
           type: Exact
-          value: /<pfx>-openapi
+          value: /matveevali-openapi
     filters:
     - type: URLRewrite
       urlRewrite:
@@ -46,5 +46,5 @@ spec:
     backendRefs:
       - group: ""
         kind: Service
-        name: <pfx>-ambulance-webapi
+        name: matveevali-ambulance-webapi
         port: 80
