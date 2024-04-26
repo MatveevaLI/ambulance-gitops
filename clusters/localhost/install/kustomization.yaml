@@ -11,6 +11,7 @@ commonLabels:
 resources:
 - ../../../apps/matveevali-ambulance-ufe
 - ../../../apps/matveevali-ambulance-webapi
+- ../../../apps/mongo-express
 
 patches:
 - path: patches/ambulance-webapi.service.yaml
