@@ -1,7 +1,7 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: matveevali-ambulance-webapi
+ name: matveevali-ambulance-webapi
 spec:
   parentRefs:
     - name: wac-hospital-gateway
@@ -10,9 +10,9 @@ spec:
       namespace: wac-hospital-system
   rules:
     - matches:
-        - path:
-          type: PathPrefix
-          value: /matveevali-api
+      - path:
+        type: PathPrefix
+        value: /matveevali-api
       filters:
         - type: URLRewrite
           urlRewrite:
