@@ -3,47 +3,47 @@ kind: HTTPRoute
 metadata:
  name: matveevali-ambulance-webapi
 spec:
-  parentRefs:
-    - name: wac-hospital-gateway
-      namespace: wac-hospital
-    - name: wac-hospital-gateway  # Hack to make it work for common cluster
-      namespace: wac-hospital-system
-  rules:
-    - matches:
+ parentRefs:
+   - name: wac-hospital-gateway
+     namespace: wac-hospital
+   - name: wac-hospital-gateway  # Hack to make it work for common cluster
+     namespace: wac-hospital-system
+ rules:
+   - matches:
+       - path:
+           type: PathPrefix
+           value: /matveevali-api
+     filters:
+       - type: URLRewrite
+         urlRewrite:
+           path:
+             type: ReplacePrefixMatch
+             replacePrefixMatch: /api
+     backendRefs:
+       - group: ""
+         kind: Service
+         name: matveevali-ambulance-webapi
+         port: 80
+   - matches:
       - path:
-        type: PathPrefix
-        value: /matveevali-api
-      filters:
-        - type: URLRewrite
-          urlRewrite:
-            path:
-              type: ReplacePrefixMatch
-              replacePrefixMatch: /api
-      backendRefs:
-        - group: ""
-          kind: Service
-          name: matveevali-ambulance-webapi
-          port: 80
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /matveevali-openapi-ui
-      backendRefs:
-        - group: ""
-          kind: Service
-          name: matveevali-openapi-ui
-          port: 80
-    - matches:
+          type: PathPrefix
+          value: /matveevali-openapi-ui
+     backendRefs:
+      - group: ""
+        kind: Service
+        name: matveevali-openapi-ui
+        port: 80
+   - matches:
         - path:
             type: Exact
             value: /matveevali-openapi
-      filters:
+     filters:
       - type: URLRewrite
         urlRewrite:
           path:
             type: ReplaceFullPath
             replaceFullPath: /openapi
-      backendRefs:
+     backendRefs:
         - group: ""
           kind: Service
           name: matveevali-ambulance-webapi
