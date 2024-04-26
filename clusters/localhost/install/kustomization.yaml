@@ -12,9 +12,9 @@ resources:
 - ../../../apps/matveevali-ambulance-ufe
 - ../../../apps/matveevali-ambulance-webapi
 
+patches:
+- path: patches/ambulance-webapi.service.yaml
+
 components:
 - ../../../components/version-developers
 - https://github.com/MatveevaLI/ambulance-webapi//deployments/kustomize/components/mongodb
-
-patches:
-- path: patches/ambulance-webapi.service.yaml
