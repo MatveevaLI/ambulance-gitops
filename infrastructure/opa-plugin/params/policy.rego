@@ -45,12 +45,12 @@ user_role[ "admin" ] {
 
 # this are admin users
 user_role[ "admin" ] {
-    user.email == "ladaivanna.matveeva@gmail.com"
+    user.email == "<kolegov@email>"
 }
 
 # this are users with access to monitoring actions
 user_role[ "monitoring" ] {
-    user.email == "ladaivanna.matveeva@gmail.com"
+    user.email == "<your_github_account@email>"
 }
 
 # action is allowed if there is some role that is in user roles
@@ -66,3 +66,16 @@ allow {
     user.valid
     action_allowed
 }
+
+# set header to indicate that this policy was used to validate the request
+headers["x-validated-by"] := "opa-checkpoint"
+
+headers["x-auth-request-roles"] := concat(", ", [ role |
+    some r
+    user_role[r]
+    role := r
+])
+
+# provide result to caller
+result["allowed"] := allow
+result["headers"] := headers

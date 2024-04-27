@@ -8,13 +8,13 @@ commonLabels:
   app.kubernetes.io/component: opa-plugin
 
 resources:
-- deployment.yaml
-- service.yaml
+  - deployment.yaml
+  - service.yaml
 
 configMapGenerator:
-- name: opa-config
-  files:
-    - config.yaml=params/opa-config.yaml
-- name: opa-policy
-  files:
-    - params/policy.rego
+  - name: opa-config
+    files:
+      - config.yaml=params/opa-config.yaml
+  - name: opa-policy
+    files:
+      - params/policy.rego
