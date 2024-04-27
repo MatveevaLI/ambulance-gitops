@@ -6,7 +6,7 @@ metadata:
 spec:
   acme:
     email: ladaivanna.matveeva@gmail.com
-    server: https://acme-staging-v02.api.letsencrypt.org/directory  # Use this for testing
+    server: https://acme-staging-v02.api.letsencrypt.org/directory # Use this for testing
     privateKeySecretRef:
       name: letsencrypt-issuer-account-key
     solvers:
