@@ -1,25 +1,25 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: &PODNAME opa-plugin
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      pod: *PODNAME
-  template:
-    metadata:
-      labels:
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: &PODNAME opa-plugin
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
         pod: *PODNAME
-    spec:
-      volumes:
+    template:
+      metadata:
+        labels:
+          pod: *PODNAME
+      spec:
+        volumes:
         - name: opa-policy
           configMap:
             name: opa-policy
         - name: opa-config
           configMap:
             name: opa-config
-      containers:
+        containers:
         - name: *PODNAME
           image: openpolicyagent/opa:latest-envoy
           securityContext:
@@ -48,11 +48,11 @@ spec:
               name: envoy-plugin
           resources:
             limits:
-              cpu: "0.5"
-              memory: "320M"
+              cpu: '0.5'
+              memory: '320M'
             requests:
-              cpu: "0.01"
-              memory: "128M"
+              cpu: '0.01'
+              memory: '128M'
           livenessProbe:
             httpGet:
               path: /health?plugins

@@ -45,7 +45,7 @@ user_role[ "admin" ] {
 
 # this are admin users
 user_role[ "admin" ] {
-    user.email == "perihelion2705@gmail.com"
+    user.email == "ladaivanna.matveeva@gmail.com"
 }
 
 # this are users with access to monitoring actions
@@ -66,16 +66,3 @@ allow {
     user.valid
     action_allowed
 }
-
-# set header to indicate that this policy was used to validate the request
-headers["x-validated-by"] := "opa-checkpoint"
-
-headers["x-auth-request-roles"] := concat(", ", [ role |
-    some r
-    user_role[r]
-    role := r
-])
-
-# provide result to caller
-result["allowed"] := allow
-result["headers"] := headers

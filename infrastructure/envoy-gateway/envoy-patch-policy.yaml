@@ -42,7 +42,7 @@ spec:
                     - exact: authorization
                     - prefix: x-auth
     - type: "type.googleapis.com/envoy.config.listener.v3.Listener"
-      name:  wac-hospital/wac-hospital-gateway/fqdn
+      name: wac-hospital/wac-hospital-gateway/fqdn
       operation:
         op: add
         path: "/filter_chains/0/filters/0/typed_config/http_filters/1"
