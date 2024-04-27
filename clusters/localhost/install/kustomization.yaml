@@ -9,13 +9,14 @@ commonLabels:
   app.kubernetes.io/part-of: wac-hospital
 
 resources:
-- ../../../apps/matveevali-ambulance-ufe
-- ../../../apps/matveevali-ambulance-webapi
-- ../../../apps/mongo-express
+  - ../../../apps/matveevali-ambulance-ufe
+  - ../../../apps/matveevali-ambulance-webapi
+  - ../../../apps/mongo-express
 
 patches:
-- path: patches/ambulance-webapi.service.yaml
+  - path: patches/ambulance-webapi.service.yaml
+  - path: patches/mongodb-auth.secret.yaml
 
 components:
-- ../../../components/version-developers
-- https://github.com/MatveevaLI/ambulance-webapi//deployments/kustomize/components/mongodb
+  - ../../../components/version-developers
+  - https://github.com/MatveevaLI/ambulance-webapi//deployments/kustomize/components/mongodb
