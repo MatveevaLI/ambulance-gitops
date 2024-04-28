@@ -27,7 +27,7 @@ request_allowed_role["monitoring"] := true {
 # !!! in production use oposite logic: define white-listed paths
 request_allowed_role["user"] := true {
    not glob.match("/monitoring*", [], http_request.path)
-   not glob.match("/http-echo*", [], http_request.path)
+   #not glob.match("/http-echo*", [], http_request.path)
 }
 
 # define roles for user
