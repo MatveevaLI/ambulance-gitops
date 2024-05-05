@@ -13,7 +13,7 @@ resources:
   - ../../../apps/matveevali-ambulance-webapi
   - ../../../apps/mongo-express
   - ../../../apps/http-echo
-
+  - ../../../apps/observability-webc
 patches:
   - path: patches/ambulance-webapi.service.yaml
   - path: patches/mongodb-auth.secret.yaml
