@@ -11,4 +11,4 @@ patches:
 namespace: wac-hospital # chceme tieto objekty umiestniť do `wac-hospital` namespace
 
 commonLabels:
-  app.kubernetes.io/component: ufe-controller
+  app.kubernetes.io/component: ufe-controller 
