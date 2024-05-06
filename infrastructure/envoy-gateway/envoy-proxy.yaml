@@ -3,7 +3,6 @@ kind: EnvoyProxy
 metadata:
   name: envoy-proxy
   namespace: envoy-gateway-system
- 
 spec:
   provider:
     type: Kubernetes
@@ -11,3 +10,18 @@ spec:
       envoyDeployment:
         container:
           image: envoyproxy/envoy:distroless-v1.30-latest
+
+---
+apiVersion: gateway.envoyproxy.io/v1alpha1
+kind: EnvoyProxy
+metadata:
+  name: wac-hospital-proxy
+  namespace: envoy-gateway-system
+spec:
+  telemetry:
+    tracing:
+      samplingRate: 100  # sample 100% of requests - downrate in production
+      provider:
+        host: jaeger-collector.wac-hospital
+        port: 4317
+        type: OpenTelemetry
